@@ -11,6 +11,7 @@ declare const self: ServiceWorkerGlobalScope;
 
 self.addEventListener('message', event => {
 	if (event.data && event.data.type === 'SKIP_WAITING') self.skipWaiting();
+	console.log(`🧊 ~ SKIP_WAITING`);
 });
 
 // self.__WB_MANIFEST is default injection point
@@ -25,16 +26,16 @@ cleanupOutdatedCaches();
 
 
 // Custom Part
-self.addEventListener('install', e => {
-	console.log(`[PWA] sw install event`, e);
-	// self.skipWaiting()
-});
+// self.addEventListener('install', e => {
+// 	console.log(`[PWA] sw install event`, e);
+// 	self.skipWaiting()
+// });
 
-self.addEventListener('activate', e => {
-	console.log(`[PWA] sw activate event`, e);
-	// self.skipWaiting()
-});
+// self.addEventListener('activate', e => {
+// 	console.log(`[PWA] sw activate event`, e);
+// 	self.skipWaiting()
+// });
 
-self.addEventListener('fetch', e => {
+// self.addEventListener('fetch', e => {
 	// console.log(`[PWA] sw fetch event`, e);   
-});
+// });

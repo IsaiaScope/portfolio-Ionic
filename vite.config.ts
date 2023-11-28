@@ -73,12 +73,12 @@ export default defineConfig({
 						'sizes': '256x256',
 						'purpose': 'any maskable',
 					},
-					{
-						'src': '/pwa/imgs/icon-512.webp',
-						'type': 'image/png',
-						'sizes': '512x512',
-						'purpose': 'any maskable',
-					},
+					// {
+					// 	'src': '/pwa/imgs/icon-512.webp',
+					// 	'type': 'image/png',
+					// 	'sizes': '512x512',
+					// 	'purpose': 'any maskable',
+					// },
 				],
 				start_url: '.',
 				display: 'standalone',
@@ -89,17 +89,11 @@ export default defineConfig({
 			injectRegister: null,
 			
 			registerType: 'prompt',
-			// injectManifest: {
-      //   globDirectory: 'dist/',
-      //   globPatterns: ['**/*.{json,ico,svg,ttf,woff,css,js,html,txt,jpg,png,woff2,mjs}'],
-      //   swDest: 'dist/sw.ts',
-      //   swSrc: 'src/pwa/snippets/sw.ts',
-      //   maximumFileSizeToCacheInBytes: 30000000
-      // },
+
 			strategies: 'injectManifest',
 			outDir: 'dist',
 			
-			srcDir: 'src/pwa/snippets',
+			srcDir: 'src/pwa',
 			filename: 'sw.ts',
 		}),
 	],
