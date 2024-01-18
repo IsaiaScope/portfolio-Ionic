@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
-import { registerSW } from 'virtual:pwa-register';
+import React from 'react';
 import { useRegisterSW } from 'virtual:pwa-register/react';
-import PWAToast from './components/pwa-toast/pwa-toast';
+import PWAToast from './components/PWAToast/PWAToast';
 
 const PWA: React.FC = () => {
 	const {
@@ -39,7 +38,7 @@ const PWA: React.FC = () => {
 			{offlineReady && (
 				<PWAToast
 					isOpenFlag={offlineReady}
-					message='Application ready to be installed'
+					message='Application ready to work offline'
 				/>
 			)}
 			{needRefresh && (

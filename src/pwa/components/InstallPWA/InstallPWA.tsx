@@ -40,9 +40,9 @@ const InstallPWA: React.FC = () => {
 	const isIOSDevice = useIsIOSDevice();
 
 	useEffect(() => {
-		const handler = async (e: BeforeInstallPromptEvent) => {
+		const handler = (e: BeforeInstallPromptEvent) => {
 			e.preventDefault();
-			// NOTE Safari e Chrome Mobile is false
+			// NOTE In Safari and Chrome Mobile is false
 			setSupportsPWA(true);
 			setPromptInstall(e);
 		};
@@ -51,6 +51,29 @@ const InstallPWA: React.FC = () => {
 
 		return () => window.removeEventListener<any>('beforeinstallprompt', handler);
 	}, []);
+
+	useEffect(() => {
+		window.addEventListener("appinstalled", () => {
+			console.log("Thank you for installing our app!");
+			console.log(`🧊 ~ log: `, window.matchMedia('(display-mode: standalone)').matches);
+		});
+
+		return () => window.removeEventListener<any>('appinstalled', () => {});
+	}, []);
+
+	// const check = async () => {
+
+	// 		if("getInstalledRelatedApps" in navigator) {
+	// 			// @ts-ignore
+	// 			const result = await navigator.getInstalledRelatedApps();
+	// 			console.log(`🧊 ~ result: `, result);
+	// 	 }
+
+	// }
+
+
+
+	// check()
 
 	const onClick = (e: React.MouseEvent<HTMLButtonElement>) => {
 		e.preventDefault();
@@ -72,7 +95,12 @@ const InstallPWA: React.FC = () => {
 		return <button style={{ padding: '30px' }}>{`add to home screen`}</button>;
 	}
 
-	return <button style={{ padding: '30px' }}>{`pwa not supported try on chrome or safari`}</button>;
+	return (
+		<button
+			style={{
+				padding: '30px',
+			}}>{`pwa not supported try on chrome or safari`}</button>
+	);
 };
 
 export default InstallPWA;

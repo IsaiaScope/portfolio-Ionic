@@ -9,6 +9,7 @@ export default defineConfig({
 		react(),
 		legacy(),
 		VitePWA({
+			// mode: 'development',
 			workbox: {
 				globPatterns: ['**/*.{js,css,html,ico,png,svg,webp}'],
 				sourcemap: true,
@@ -16,12 +17,24 @@ export default defineConfig({
 				// cleanupOutdatedCaches: false, generateSW already include
 			},
 			devOptions: {
-				enabled: true, // make pwa installable in dev 
+				enabled: true, // make pwa installable in dev
 				type: 'module', // necessary for 	strategies: 'injectManifest',
 				// navigateFallback: 'index.html',
 				// suppressWarnings: true,
 			},
 			manifest: {
+				prefer_related_applications: true,
+				related_applications: [
+					{
+						platform: 'webapp',
+						url: 'http://localhost:8100/manifest.webmanifest',
+					},
+					{
+						platform: 'webapp',
+						url: 'https://portfolio-riva-isaia.netlify.app/manifest.webmanifest',
+					},
+				],
+				id: 'HomeISOnFire',
 				name: 'Portfolio Riva Isaia',
 				short_name: 'ISO',
 				description: 'Ionic Application for Riva Isaia Portfolio',
@@ -87,12 +100,11 @@ export default defineConfig({
 			},
 			// includeAssets: ['**/*.{png,ico,png,svg,webp}'],
 			injectRegister: null,
-			
 			registerType: 'prompt',
 
 			strategies: 'injectManifest',
 			outDir: 'dist',
-			
+
 			srcDir: 'src/pwa',
 			filename: 'sw.ts',
 		}),
@@ -103,6 +115,7 @@ export default defineConfig({
 		environment: 'jsdom',
 		setupFiles: './src/setupTests.ts',
 	},
+
 	build: {
 		sourcemap: true,
 	},

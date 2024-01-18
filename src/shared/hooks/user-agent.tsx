@@ -36,6 +36,7 @@ function useIsIOSDevice(uaString = defaultUAString) {
 		if (/iOS|Mac OS/.test(osName)) {
 			return true;
 		}
+		
 		const { vendor = '' } = device;
 		if (/Apple/.test(vendor)) {
 			return true;

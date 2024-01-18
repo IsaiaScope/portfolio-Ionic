@@ -8,10 +8,11 @@ import { NavigationRoute, registerRoute } from 'workbox-routing';
 
 // Lib Doc
 declare const self: ServiceWorkerGlobalScope;
+console.log(`🧊 ~ self: `, self);
 
 self.addEventListener('message', event => {
 	if (event.data && event.data.type === 'SKIP_WAITING') self.skipWaiting();
-	console.log(`🧊 ~ SKIP_WAITING`);
+	console.log(`🧊 ~ SKIP_WAITINGS`, self);
 });
 
 // self.__WB_MANIFEST is default injection point
@@ -22,8 +23,6 @@ cleanupOutdatedCaches();
 
 // to allow work offline
 // registerRoute(new NavigationRoute(createHandlerBoundToURL('index.html')))
-
-
 
 // Custom Part
 // self.addEventListener('install', e => {
@@ -37,5 +36,6 @@ cleanupOutdatedCaches();
 // });
 
 // self.addEventListener('fetch', e => {
-	// console.log(`[PWA] sw fetch event`, e);   
+// 	console.log(`[PWA] sw fetch event`, e, self);   
 // });
+
