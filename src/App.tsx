@@ -21,7 +21,14 @@ import './theme/variables.css';
 import PWA from './pwa/pwa-provider';
 import MainOutlet from './routes/main-outlet';
 
-setupIonicReact();
+// https://capacitorjs.com/docs/apis/splash-screen#hiding-the-splash-screen
+
+setupIonicReact({
+  // swipeBackEnabled: false,
+	rippleEffect: false,
+	// mode: 'md'
+});
+
 
 const App: React.FC = () => (
 	<IonApp>

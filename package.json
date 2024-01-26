@@ -9,7 +9,8 @@
     "preview": "vite preview",
     "test.e2e": "cypress run",
     "test.unit": "vitest",
-    "lint": "eslint"
+    "lint": "eslint",
+    "ngrok": "ngrok http http://localhost:8100 --domain=internal-dogfish-enjoyed.ngrok-free.app"
   },
   "dependencies": {
     "@capacitor/android": "5.5.1",

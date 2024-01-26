@@ -12,6 +12,10 @@ import {
 	IonMenuToggle,
 	IonTitle,
 	IonToolbar,
+	useIonViewDidEnter,
+	useIonViewDidLeave,
+	useIonViewWillEnter,
+	useIonViewWillLeave,
 } from '@ionic/react';
 import { C_ROUTES } from '../../../routes/models/constants';
 import {
@@ -24,14 +28,35 @@ import {
 } from 'ionicons/icons';
 import { SETTINGS_ROUTES, MAIN_ROUTES } from '../../../routes/models/routes';
 import { LABELS } from '../../../shared/models/labels';
+import { useEffect, useState } from 'react';
+import { useLocation } from 'react-router';
+import { menuController } from '@ionic/core/components';
+
 
 const IsoMainMenu: React.FC = () => {
 	const { MAIN_MENU_ID } = C_ROUTES;
 	const { HOME, SETTINGS } = MAIN_ROUTES;
 	const { PWA, PROFILE, GENERAL } = SETTINGS_ROUTES;
 
+const {pathname} = useLocation();
+
+const closeMenu = async () => {
+	console.log(`🧊 ~ location: `, location);
+	const isOpen = await menuController.isOpen('main-outlet');
+	console.log(`🧊 ~ isOpen: `, isOpen);
+	
+	await menuController.close('main-outlet');
+};
+
+useEffect(() => {
+	closeMenu();
+	// location.reload();
+}, [pathname]);
+
+
+
 	return (
-		<IonMenu type='push' contentId={MAIN_MENU_ID}>
+		<IonMenu side='end' swipeGesture={false} menuId={MAIN_MENU_ID} contentId={MAIN_MENU_ID}>
 			<IonHeader className='ion-no-border'>
 				<IonToolbar>
 					<IonMenuToggle slot='start'>

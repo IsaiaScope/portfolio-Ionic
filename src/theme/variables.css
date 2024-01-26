@@ -241,6 +241,10 @@ html {
   --ion-dynamic-font: var(--ion-default-dynamic-font);
 }
 
+/* body {
+  overscroll-behavior: contain !important;
+} */
+
 /* ion-toolbar {
   --min-height: 100px;
 } */

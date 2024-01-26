@@ -1,14 +1,16 @@
-import { IonContent, IonPage } from '@ionic/react';
+import { IonContent, IonPage, IonRouterOutlet } from '@ionic/react';
 import { PropsWithChildren } from 'react';
 import IsoHeader from '../../components/ui/iso-header/iso-header';
+
 
 type Props = {} & PropsWithChildren;
 
 const PageOutlet: React.FC<Props> = ({ children }) => {
+
 	return (
-		<IonPage>
+		<IonPage id={Math.random().toString()}>
 			<IsoHeader />
-			<IonContent force-overscroll={true} fullscreen={true} className='ion-padding'>{children}</IonContent>
+			<IonContent fullscreen={true} className='ion-padding'>{children}</IonContent>
 		</IonPage>
 	);
 };
